@@ -37,7 +37,8 @@ app.post("/api/todos", async (req, res) => {
 
 // logic to connect to mongo db
 // first specify the mongodb connect url (this will be the address of our mongoDB docker container)
-const dbUrl = "mongodb://127.0.0.1:27017/todoApp";
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/todoApp";
+console.log(process.env.DB_URL);
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
